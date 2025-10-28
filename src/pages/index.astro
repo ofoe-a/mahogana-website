@@ -11,7 +11,6 @@ import Layout from "../layouts/Layout.astro";
   class="absolute inset-0 -z-10 h-full w-full object-cover" 
 />
 <div class="absolute inset-0 -z-10 bg-black/60"></div>
-  />
     <div class="absolute inset-0 opacity-25 bg-[radial-gradient(50%_50%_at_50%_50%,_#ffffff20_0,_transparent_70%)]"></div>
     <div class="mx-auto max-w-7xl px-4 py-28 md:py-36">
       <div class="max-w-3xl">
@@ -32,14 +31,19 @@ import Layout from "../layouts/Layout.astro";
 
   <!-- 3 FEATURE CARDS -->
   <section id="products" class="-mt-10">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-      <a href="/products#doors" class="group block overflow-hidden rounded-xl bg-white shadow">
-        <div class="h-56 w-full bg-brand-leaf/30"></div>
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3 ">
+      <a href="/products#doors" class="group block overflow-hidden rounded-xl bg-white shadow shadow-md hover:shadow-xl transition-shadow transition-transform duration-500 hover:scale-105">
+        <div class="h-56 w-full object-cover ">
+          <img 
+            src="/images/hero.webp" 
+            alt="Mahogana wood craftsmanship" 
+          />
+        </div>
         <div class="p-4">
           <p class="font-medium text-brand-dark">Native Solid-Wood Doors</p>
         </div>
       </a>
-      <a href="/products#signage" class="group block overflow-hidden rounded-xl bg-white shadow">
+      <a href="/products#signage" class="group block overflow-hidden rounded-xl bg-white shadow shadow-md hover:shadow-xl transition-shadow transition-transform duration-500 hover:scale-105">
         <div class="h-56 w-full bg-brand-leaf/20"></div>
         <div class="p-4">
           <p class="font-medium text-brand-dark">Architectural Signage</p>
@@ -77,26 +81,31 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- STATS STRIP -->
-  <section class="bg-brand-sand">
-    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-12 text-brand-dark md:grid-cols-4">
-      <div class="text-center">
-        <div class="text-3xl font-semibold">29</div>
-        <div class="mt-1 text-sm opacity-70">Partner Companies</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-semibold">300+</div>
-        <div class="mt-1 text-sm opacity-70">Pieces Delivered</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-semibold">169k</div>
-        <div class="mt-1 text-sm opacity-70">Clients</div>
-      </div>
-      <div class="text-center">
-        <div class="text-3xl font-semibold">96%</div>
-        <div class="mt-1 text-sm opacity-70">On-time Delivery</div>
-      </div>
+<section class="bg-brand-sand py-12">
+  <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 text-brand-dark md:grid-cols-4">
+
+    <div class="text-center">
+      <div class="text-3xl font-semibold" data-target="29">0</div>
+      <div class="mt-1 text-sm opacity-70">Partner Companies</div>
     </div>
-  </section>
+
+    <div class="text-center">
+      <div class="text-3xl font-semibold" data-target="300">0</div>
+      <div class="mt-1 text-sm opacity-70">Pieces Delivered</div>
+    </div>
+
+    <div class="text-center">
+      <div class="text-3xl font-semibold" data-target="169000">0</div>
+      <div class="mt-1 text-sm opacity-70">Clients</div>
+    </div>
+
+    <div class="text-center">
+      <div class="text-3xl font-semibold" data-target="96">0</div>
+      <div class="mt-1 text-sm opacity-70">On-time Delivery</div>
+    </div>
+
+  </div>
+</section>
 
   <!-- PROCESS -->
   <section class="bg-brand-dark py-16 text-white">
@@ -130,3 +139,39 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
 </Layout>
+
+<script>
+  const counters = document.querySelectorAll('[data-target]');
+  const options = { threshold: 0.5 };
+
+  const startCounting = (entry) => {
+    const el = entry.target;
+    const target = +el.getAttribute('data-target');
+    const duration = 3000; // 
+    const step = target / (duration / 10); // ~60fps
+    let count = 0;
+
+    const update = () => {
+      count += step;
+      if (count < target) {
+        el.textContent = Math.floor(count).toLocaleString();
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target.toLocaleString();
+      }
+    };
+
+    update();
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        entry.target.classList.add('counted');
+        startCounting(entry);
+      }
+    });
+  }, options);
+
+  counters.forEach(counter => observer.observe(counter));
+</script>
