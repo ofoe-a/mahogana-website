@@ -17,9 +17,11 @@ import Layout from "../layouts/Layout.astro";
   <!-- Content centered -->
   <div class="mx-auto max-w-3xl px-4 text-center">
     <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
-      We take care of your <br />
-      <span class="text-brand-mist">wood & space</span>
-    </h1>
+  We take care of your <br />
+  <span class="text-brand-mist">
+    wood & <span id="heroWord" class="inline-block transition-all duration-300">space</span>
+  </span>
+</h1>
     <p class="mt-4 text-lg text-white/85">
       CNC-engraved doors, architectural signage, and functional wooden pieces
       for hotels, developers, and brands.
@@ -32,17 +34,18 @@ import Layout from "../layouts/Layout.astro";
 </section>
 
   <!-- 3 FEATURE CARDS -->
-  <section id="products" class="-mt-10">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-      <a href="/products#doors" class="group block overflow-hidden rounded-xl bg-white shadow hover:shadow-xl transition-shadow">
+  <section  id="products" class="relative z-10 -mt-24 md:-mt-36">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-20 px-4 md:grid-cols-3">
+      <a href="/products#doors" 
+      class="reveal delay-0 group block overflow-hidden rounded-xl bg-white shadow hover:shadow-xl transition-all duration-700">
         <img
           src="/images/mahogana-doors-thumbnail.webp"
-          alt="Native solid-wood doors"
+          alt="Custom Wooden Doors"
           class="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
         <div class="p-4">
-          <p class="font-medium text-brand-dark">Native Solid-Wood Doors</p>
+          <p class="font-medium text-brand-dark">Custom Wooden Doors</p>
         </div>
       </a>
 
@@ -73,15 +76,18 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- INTRO + IMAGE -->
-  <section class="py-16">
+  <section class="pt-28 pb-16 md:pt-36">
     <div class="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 md:grid-cols-2">
       <div>
-        <h2 class="text-2xl font-semibold text-brand-dark">
-          Welcome to Mahogana — we build more than products
+        <h2 class="text-5xl font-semibold text-brand-dark">
+          Welcome to Mahogana
         </h2>
         <p class="mt-4 text-black/70">
-          We pair precision CNC with disciplined finishing to deliver durable doors, architectural signage,
-          and functional pieces at reliable lead times.
+          At <strong>Mahogana</strong>, we craft precision-engineered <strong>wooden doors</strong>,
+  <strong>architectural signage</strong>, and <strong>custom furniture</strong> that define modern Ghanaian craftsmanship.  
+  Based in Accra, our team combines advanced <strong>Machine carpentry</strong> with sustainable
+  sourcing to deliver premium <strong>wood products</strong> for homes, hotels, offices, and
+  real estate developers across Ghana and West Africa.
         </p>
         <a href="/about" class="mt-6 inline-block text-brand-dark underline decoration-brand-gold decoration-2 underline-offset-4">
           About us
@@ -90,7 +96,7 @@ import Layout from "../layouts/Layout.astro";
       <div class="rounded-2xl shadow overflow-hidden">
         <img
           src="/images/mahogana-worker.webp"
-          alt="Mahogana Carpenter"
+          alt="Carpenter installing custom signage in Accra Ghana"
         <div class="aspect-[16/9] w-full bg-brand-sand">
         
         </div>
@@ -99,7 +105,18 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- STATS STRIP -->
+     <section class="relative overflow-hidden bg-brand-sand py-12">
+  <!-- decorative wood streaks -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-0
+           bg-[url('/images/wood-streaks.svg')] bg-center bg-cover bg-no-repeat-x
+           opacity-80 mix-blend-multiply md:opacity-10">
+  </div>
   <section class="bg-brand-sand py-12">
+  
+
+  <div class="relative mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 text-brand-dark md:grid-cols-4"></div>
     <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 text-brand-dark md:grid-cols-4">
       <div class="text-center">
         <div class="text-3xl font-semibold" data-target="29">0</div>
@@ -178,7 +195,7 @@ import Layout from "../layouts/Layout.astro";
           <a href="mailto:hello@mahogana.com" class="btn btn-primary rounded-full px-6 py-3 text-center">
             Email us
           </a>
-          <a href="https://wa.me/233XXXXXXXXX" target="_blank" rel="noopener"
+          <a href="http://wa.me/233508646084" target="_blank" rel="noopener"
              class="rounded-full px-6 py-3 text-center border border-white/70 hover:bg-white hover:text-brand-dark transition">
             WhatsApp
           </a>
@@ -237,4 +254,67 @@ import Layout from "../layouts/Layout.astro";
       nextBtn.addEventListener('click', () => manualScroll(1));
     }
   }
+</script>
+
+<!-- WORD CYCLER: wood & [space → office → homes → hotels → retail] -->
+<script>
+  (function () {
+    const el = document.getElementById('heroWord');
+    if (!el) return;
+
+    const words = ['space', 'office', 'home', 'hotel', 'retail'];
+    let i = 0;
+
+    // ensure starting state
+    el.textContent = words[i];
+
+    const swap = () => {
+      // fade/slide out
+      el.classList.add('opacity-0', 'translate-y-2');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+        // fade/slide in
+        el.classList.remove('opacity-0', 'translate-y-2');
+      }, 220); // out duration
+    };
+
+    setInterval(swap, 1800); // change every ~1.8s
+  })();
+</script>
+
+<!-- FEATURE CARD REVEAL ON SCROLL -->
+<script>
+  (function () {
+    const cards = document.querySelectorAll('.reveal');
+    if (!cards.length) return;
+
+    // initial hidden state (Tailwind classes)
+    cards.forEach((c) => {
+      c.classList.add('opacity-0', 'translate-y-8');
+    });
+
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+
+          // optional: respect our stagger delays
+          const d = [...el.classList].find(cls => cls.startsWith('delay-'));
+          const ms = d ? Number(d.replace('delay-', '')) : 0;
+
+          setTimeout(() => {
+            el.classList.remove('opacity-0', 'translate-y-8');
+            el.classList.add('opacity-100', 'translate-y-0');
+          }, ms);
+
+          obs.unobserve(el);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cards.forEach((c) => io.observe(c));
+  })();
 </script>
