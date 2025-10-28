@@ -8,6 +8,12 @@ import Header from "../components/Header.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Mahogana | Wooden Doors & Carpentry in Ghana" />
+<meta property="og:description" content="Mahogana is Ghana’s top wood manufacturing brand specializing in CNC-engraved doors, signage, and furniture." />
+<meta property="og:image" content="/images/mahogana-preview.jpg" />
+<meta property="og:url" content="https://mahogana.com" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="robots" content="index, follow" />
     <meta
       name="description"
       content="Mahogana is Ghana’s leading carpentry and wooden door manufacturing company. We produce CNC-engraved doors, wood signage, and furniture for homes, hotels, and real estate developers."
@@ -20,4 +26,22 @@ import Header from "../components/Header.astro";
     <Header />
     <slot />
   </body>
+  <meta property="og:url" content="https://mahogana.com" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Mahogana",
+  "image": "https://mahogana.com/images/mahogana-logo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Accra",
+    "addressCountry": "GH"
+  },
+  "url": "https://mahogana.com",
+  "telephone": "+233508646084",
+  "description": "Mahogana manufactures CNC-engraved wooden doors, signage, and custom furniture for homes and businesses in Ghana."
+}
+</script>
 </html>
