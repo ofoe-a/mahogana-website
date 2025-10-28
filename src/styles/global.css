@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+
+
+html, body {
+  font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, "Noto Sans",
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+body {
+  @apply font-[Poppins], sans-serif;
+}
+/* Button & link styling */
+.btn {
+  @apply inline-flex items-center justify-center font-medium transition duration-300;
+}
+
+.btn-primary {
+  @apply bg-brand-gold text-white px-6 py-2 rounded-md transition-all duration-300 hover:bg-brand-gold hover:text-brand-dark shadow transform hover:-translate-y-[2px] hover:shadow-lg;
+}
+
+.btn-ghost {
+  @apply bg-transparent border border-white/20 text-white px-6 py-2 rounded-md hover:bg-white/10;
+}

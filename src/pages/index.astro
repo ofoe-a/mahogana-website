@@ -1,11 +1,132 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <!-- HERO -->
+  <section class="relative isolate bg-brand-dark text-white">
+    <img 
+  src="/images/hero.webp" 
+  alt="Mahogana wood craftsmanship" 
+  class="absolute inset-0 -z-10 h-full w-full object-cover" 
+/>
+<div class="absolute inset-0 -z-10 bg-black/60"></div>
+  />
+    <div class="absolute inset-0 opacity-25 bg-[radial-gradient(50%_50%_at_50%_50%,_#ffffff20_0,_transparent_70%)]"></div>
+    <div class="mx-auto max-w-7xl px-4 py-28 md:py-36">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-semibold leading-tight">
+          We take care of your <br />
+          <span class="text-brand-gold">wood & space</span>
+        </h1>
+        <p class="mt-4 max-w-xl text-white/80">
+          CNC-engraved doors, architectural signage, and functional wooden pieces for hotels, developers, and brands.
+        </p>
+        <div class="mt-8 flex gap-4">
+          <a href="/contact" class="btn btn-primary">Get in touch</a>
+          <a href="/about" class="btn btn-ghost">Who we are</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 FEATURE CARDS -->
+  <section id="products" class="-mt-10">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
+      <a href="/products#doors" class="group block overflow-hidden rounded-xl bg-white shadow">
+        <div class="h-56 w-full bg-brand-leaf/30"></div>
+        <div class="p-4">
+          <p class="font-medium text-brand-dark">Native Solid-Wood Doors</p>
+        </div>
+      </a>
+      <a href="/products#signage" class="group block overflow-hidden rounded-xl bg-white shadow">
+        <div class="h-56 w-full bg-brand-leaf/20"></div>
+        <div class="p-4">
+          <p class="font-medium text-brand-dark">Architectural Signage</p>
+        </div>
+      </a>
+      <a href="/products#functional" class="group block overflow-hidden rounded-xl bg-white shadow">
+        <div class="h-56 w-full bg-brand-leaf/10"></div>
+        <div class="p-4">
+          <p class="font-medium text-brand-dark">Functional Pieces</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- INTRO + IMAGE -->
+  <section class="py-16">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-semibold text-brand-dark">
+          Welcome to Mahogana — we build more than products
+        </h2>
+        <p class="mt-4 text-black/70">
+          We pair precision CNC with disciplined finishing to deliver durable doors, architectural signage,
+          and functional pieces at reliable lead times.
+        </p>
+        <a href="/about" class="mt-6 inline-block text-brand-dark underline decoration-brand-gold decoration-2 underline-offset-4">
+          About us →
+        </a>
+      </div>
+      <div class="rounded-2xl shadow overflow-hidden">
+        <!-- placeholder box; swap for a real image later -->
+        <div class="aspect-[16/9] w-full bg-brand-sand"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="bg-brand-sand">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-12 text-brand-dark md:grid-cols-4">
+      <div class="text-center">
+        <div class="text-3xl font-semibold">29</div>
+        <div class="mt-1 text-sm opacity-70">Partner Companies</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-semibold">300+</div>
+        <div class="mt-1 text-sm opacity-70">Pieces Delivered</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-semibold">169k</div>
+        <div class="mt-1 text-sm opacity-70">Clients</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-semibold">96%</div>
+        <div class="mt-1 text-sm opacity-70">On-time Delivery</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="bg-brand-dark py-16 text-white">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mb-8 flex items-center justify-between">
+        <h3 class="text-2xl font-semibold">Meticulous and Sustainable Process</h3>
+        <a href="/process" class="btn btn-ghost">Our Process</a>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-4">
+        <div class="rounded-2xl bg-white/5 p-6">
+          <div class="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-gold text-brand-dark font-semibold">01</div>
+          <h4 class="font-semibold">Discovery & Consultation</h4>
+          <p class="mt-2 text-sm text-white/80">Share drawings, quantities, finishes, and deadlines. We scope and reply in 24h.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <div class="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-gold text-brand-dark font-semibold">02</div>
+          <h4 class="font-semibold">Material & Prototyping</h4>
+          <p class="mt-2 text-sm text-white/80">Approve fit & finish on a prototype before production.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <div class="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-gold text-brand-dark font-semibold">03</div>
+          <h4 class="font-semibold">Finishing Discipline</h4>
+          <p class="mt-2 text-sm text-white/80">Durable, consistent finishes with responsible processes.</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6">
+          <div class="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-gold text-brand-dark font-semibold">04</div>
+          <h4 class="font-semibold">QC & Support</h4>
+          <p class="mt-2 text-sm text-white/80">Multi-point QC, safe packing, and post-install support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

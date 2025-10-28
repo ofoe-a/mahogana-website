@@ -8,7 +8,13 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.16",
     "astro": "^5.15.1"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "^5.2.7",
+    "@tailwindcss/vite": "^4.1.16",
+    "tailwindcss": "^4.1.16"
   }
 }
