@@ -1,27 +1,28 @@
-@import "tailwindcss";
 @import "@fontsource/poppins/400.css";
 @import "@fontsource/poppins/500.css";
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
 
 
+@import "tailwindcss";
+
+html, body { margin: 0; padding: 0; }
+body { overflow-y: auto; }   /* prevents first-child margin collapsing with <body> */
+
+@theme {
+  --color-brand-dark:  #0C2B1C; /* deep green */
+  --color-brand-sand:  #E5D5C0; /* light brown */
+  --color-brand-gold:  #C9A227; /* gold */
+  --color-brand-leaf:  #1F4D36; /* green */
+  --color-brand-mist:  #F5F1EA; /* light bg */
+  --color-brand-brown: #3B2414; /* dark brown */
+}
+
 html, body {
   font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-               Roboto, "Helvetica Neue", Arial, "Noto Sans",
-               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-body {
-  @apply font-[Poppins], sans-serif;
-}
-/* Button & link styling */
-.btn {
-  @apply inline-flex items-center justify-center font-medium transition duration-300;
+               Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-weight: 400; /* ensures the default text uses a weight you loaded */
 }
 
-.btn-primary {
-  @apply bg-brand-gold text-white px-6 py-2 rounded-md transition-all duration-300 hover:bg-brand-gold hover:text-brand-dark shadow transform hover:-translate-y-[2px] hover:shadow-lg;
-}
-
-.btn-ghost {
-  @apply bg-transparent border border-white/20 text-white px-6 py-2 rounded-md hover:bg-white/10;
-}
+.btn { @apply inline-flex items-center justify-center font-medium transition; }
+.btn-primary { @apply bg-brand-leaf text-white px-6 py-2 rounded-full hover:bg-brand-gold hover:text-brand-dark shadow; }

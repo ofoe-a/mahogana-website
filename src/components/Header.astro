@@ -10,22 +10,34 @@ const navLinks = [
 ---
 
 
-<header class="fixed inset-x-0 top-0 z-50 bg-brand-brown/95 backdrop-blur border-b border-white/10">
-  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 text-white">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 font-semibold text-lg hover:text-brand-gold transition">
-      <img src="/images/mahogana-logo.svg" alt="Mahogana Logo" class="h-7 w-auto" loading="eager" />
-      <!-- <span class="hidden sm:inline"></span> -->
-    </a>
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 h-20‹ transition-colors duration-500 bg-transparent">
+  <nav class="flex items-center justify-between px-12 py-6 text-white">
+    <img src="/images/mahogana-logo.svg" alt="Mahogana Logo" class="h-8"/>
 
-    <!-- Nav -->
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-      {navLinks.map(link => (
-        <a href={link.href} class="hover:text-brand-gold transition">{link.name}</a>
-      ))}
-    </nav>
+    <ul class="flex gap-12 font-medium">
+      <li><a href="#" class="hover:text-brand-gold transition-colors">Home</a></li>
+      <li><a href="#" class="hover:text-brand-gold transition-colors">Products</a></li>
+      <li><a href="#" class="hover:text-brand-gold transition-colors">Process</a></li>
+      <li><a href="#" class="hover:text-brand-gold transition-colors">Projects</a></li>
+      <li><a href="#" class="hover:text-brand-gold transition-colors">Sustainability</a></li>
+      <li><a href="#" class="hover:text-brand-gold transition-colors">About</a></li>
+    </ul>
 
-    <!-- CTA -->
-    <a href="/contact" class="btn btn-primary text-sm">Lets Talk</a>
-  </div>
+    <button class="bg-brand-leaf text-white px-6 py-2 rounded-full hover:bg-brand-gold hover:text-brand-dark transition-colors">
+      Lets Talk
+    </button>
+  </nav>
 </header>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-brand-brown', 'shadow-md');
+      navbar.classList.remove('bg-transparent');
+    } else {
+      navbar.classList.add('bg-transparent');
+      navbar.classList.remove('bg-brand-brown', 'shadow-md');
+    }
+  });
+</script>
