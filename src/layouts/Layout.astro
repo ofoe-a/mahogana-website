@@ -2,13 +2,22 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 ---
+
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" >
-  <head ><meta charset="utf-8" name="description" content="Mahogana is Ghana’s leading carpentry and wooden door manufacturing company. We produce CNC-engraved doors, wood signage, and furniture for homes, hotels, and real estate developers.">
-</head>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Mahogana is Ghana’s leading carpentry and wooden door manufacturing company. We produce CNC-engraved doors, wood signage, and furniture for homes, hotels, and real estate developers."
+    />
+
+    <title>Mahogana | Wooden Doors, Furniture & Signage in Ghana</title>
+  </head>
+
   <body class="bg-brand-mist text-gray-900 min-h-screen">
     <Header />
     <slot />
   </body>
 </html>
-
